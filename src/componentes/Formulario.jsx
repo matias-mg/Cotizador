@@ -11,16 +11,16 @@ class Formulario extends Component {
     e.preventDefault();
 
     //Obtener radioButton seleccionado
-    const plan = this.basicPlanRef.current.checked ? 'basico':'completo';
+    const plan = this.basicPlanRef.current.checked ? 'basico' : 'completo';
 
     //Objeto para imprimir auto
     const infoAuto = {
       brand: this.brandRef.current.value,
       year: this.yearRef.current.value,
-      plan: plan 
+      plan: plan
     }
 
-    console.log(infoAuto);
+    this.props.cotizarSeguro(infoAuto);
   }
 
   render() {
@@ -38,6 +38,7 @@ class Formulario extends Component {
         <div className="campo">
           <label>Año</label>
           <select name="year" ref={this.yearRef}>
+            <option value="2019">2019</option>
             <option value="2018">2018</option>
             <option value="2017">2017</option>
             <option value="2016">2016</option>
@@ -48,7 +49,6 @@ class Formulario extends Component {
             <option value="2011">2011</option>
             <option value="2010">2010</option>
             <option value="2009">2009</option>
-            <option value="2008">2008</option>
           </select>
         </div>
         <div className="campo">
