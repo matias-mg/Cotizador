@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Formulario from './Formulario';
+import Resumen from './Resumen';
+import Resultado from './Resultado';
 import {obtenerDiferenciaAnio, calcularMarca, obtenerPlan} from '../helper';
 
 class App extends Component {
@@ -8,7 +10,6 @@ class App extends Component {
     resultado: '',
     datos: {}
   }
-
 
   cotizarSeguro = datos => {
     const {brand, year, plan} = datos;
@@ -29,7 +30,10 @@ class App extends Component {
     //Obtener el plan seleccionado
     resultado += base * obtenerPlan(plan);
 
-    console.log(resultado);
+    this.setState({
+      resultado: resultado,
+      datos: {brand, year, plan}
+    })
   }
 
   render() {
@@ -42,6 +46,10 @@ class App extends Component {
         <div className="contenedor-formulario">
           <Formulario
             cotizarSeguro={this.cotizarSeguro}
+          />
+          <Resumen 
+            datos={this.state.datos}
+            resultado={this.state.resultado}
           />
         </div>
       </div>
