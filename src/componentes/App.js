@@ -40,7 +40,7 @@ class App extends Component {
     return (
       <div className="contenedor">
         <Header
-          titulo='Cotizador seguro de Auto'
+          titulo='Cotizador seguro de Automóvil'
         />
   
         <div className="contenedor-formulario">
